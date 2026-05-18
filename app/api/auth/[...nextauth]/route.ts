@@ -1,6 +1,7 @@
 import NextAuth from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import bcrypt from "bcryptjs";
+import dbConnect from "@/lib/dbConnect";
+import User from "@/models/User";
 
 const handler = NextAuth({
   providers: [
@@ -13,32 +14,26 @@ const handler = NextAuth({
       async authorize(credentials) {
         if (!credentials?.username || !credentials?.password) return null;
 
-        const validUser = credentials.username === process.env.ADMIN_USERNAME;
-        const validPass = await bcrypt.compare(
-          credentials.password,
-          process.env.ADMIN_PASSWORD_HASH as string
-        );
+        await dbConnect();
+        const user = await User.findOne({ username: credentials.username });
 
-        if (validUser && validPass) {
-          return { id: "1", name: "Admin", email: "admin@clyde.fit" };
-        }
-        return null;
+        if (!user) return null;
+
+        // Plain text comparison as requested
+        if (credentials.password !== user.password) return null;
+
+        return { id: user._id.toString(), name: user.username };
       },
     }),
   ],
+  session: {
+    strategy: "jwt",
+    maxAge: 7 * 24 * 60 * 60, // 7 days
+  },
   pages: {
     signIn: "/admin/login",
   },
-  session: {
-    maxAge: 7 * 24 * 60 * 60, // 7 days
-  },
   secret: process.env.NEXTAUTH_SECRET,
-  callbacks: {
-    async redirect({ url, baseUrl }) {
-      if (url.startsWith(baseUrl)) return url;
-      return `${baseUrl}/admin/events`;
-    },
-  },
 });
 
 export { handler as GET, handler as POST };

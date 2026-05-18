@@ -4,12 +4,13 @@ import { Event } from "@/models/Event";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
-export default async function BookingsPage({ params }: { params: { id: string } }) {
+export default async function BookingsPage({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   await connectDB();
-  const event = await Event.findById(params.id).lean();
+  const event = await Event.findById(id).lean();
   if (!event) notFound();
 
-  const bookings = await Booking.find({ eventId: params.id }).sort({ createdAt: -1 }).lean();
+  const bookings = await Booking.find({ eventId: id }).sort({ createdAt: -1 }).lean();
 
   const csvRows = [
     ["Name", "Phone", "Email", "Spots", "Code", "Registered At"],
@@ -34,7 +35,7 @@ export default async function BookingsPage({ params }: { params: { id: string } 
         </div>
         <a
           href={csvHref}
-          download={`bookings-${params.id}.csv`}
+          download={`bookings-${id}.csv`}
           className="border border-[#2A2A2A] text-[#888888] font-barlow font-bold text-[13px] uppercase tracking-widest px-6 py-3 hover:border-green hover:text-green transition-colors duration-200"
         >
           Export CSV

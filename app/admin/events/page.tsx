@@ -1,7 +1,8 @@
 import { connectDB } from "@/lib/mongodb";
 import { Event } from "@/models/Event";
 import Link from "next/link";
-import { PlusCircle, Pencil, Trash2, BookOpen } from "lucide-react";
+import { PlusCircle, Pencil, BookOpen } from "lucide-react";
+import DeleteEventButton from "@/components/admin/DeleteEventButton";
 
 async function getEvents() {
   await connectDB();
@@ -19,7 +20,7 @@ export default async function AdminEventsPage() {
           href="/admin/events/new"
           className="flex items-center gap-2 bg-green text-black font-barlow font-bold text-[13px] uppercase tracking-widest px-5 py-3 hover:bg-[#166534] transition-colors duration-200"
         >
-          <PlusCircle size={16} /> New Event
+          <PlusCircle size={18} /> New Event
         </Link>
       </div>
 
@@ -62,18 +63,14 @@ export default async function AdminEventsPage() {
                     </span>
                   </td>
                   <td className="px-4 py-3">
-                    <div className="flex items-center gap-4">
-                      <Link href={`/admin/events/${ev._id}/edit`} className="text-[#888888] hover:text-green transition-colors">
-                        <Pencil size={15} />
+                    <div className="flex items-center gap-5">
+                      <Link href={`/admin/events/${ev._id}/edit`} className="text-[#888888] hover:text-green transition-colors" title="Edit Event">
+                        <Pencil size={18} />
                       </Link>
-                      <Link href={`/admin/bookings/${ev._id}`} className="text-[#888888] hover:text-green transition-colors">
-                        <BookOpen size={15} />
+                      <Link href={`/admin/bookings/${ev._id}`} className="text-[#888888] hover:text-green transition-colors" title="View Bookings">
+                        <BookOpen size={18} />
                       </Link>
-                      <form action={`/api/admin/events/${ev._id}/delete`} method="POST">
-                        <button type="submit" className="text-[#888888] hover:text-red transition-colors">
-                          <Trash2 size={15} />
-                        </button>
-                      </form>
+                      <DeleteEventButton id={String(ev._id)} />
                     </div>
                   </td>
                 </tr>

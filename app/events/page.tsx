@@ -2,13 +2,19 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import EventCard from "@/components/events/EventCard";
 
+import { connectDB } from "@/lib/mongodb";
+import { Event } from "@/models/Event";
+
 async function getEvents() {
   try {
-    const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
-    const res = await fetch(`${baseUrl}/api/events`, { cache: "no-store" });
-    if (!res.ok) return [];
-    return res.json();
-  } catch {
+    await connectDB();
+    const events = await Event.find({ status: "published" })
+      .select("-whatsappLink")
+      .sort({ date: 1 })
+      .lean();
+    return JSON.parse(JSON.stringify(events));
+  } catch (err) {
+    console.error("Failed to fetch events:", err);
     return [];
   }
 }
