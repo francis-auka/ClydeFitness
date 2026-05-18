@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { connectDB } from "@/lib/mongodb";
 import { Event } from "@/models/Event";
 import { Booking } from "@/models/Booking";
-import { sendSMS } from "@/lib/sms";
+import { sendSMS, formatPhone } from "@/lib/sms";
 
 export async function POST(req: Request) {
   try {
@@ -34,13 +34,14 @@ export async function POST(req: Request) {
 
     await Booking.create({ eventId, name, phone, email, spots, confirmationCode });
 
-    // Send SMS
-    const smsBody = `Hi ${name}! You're confirmed for ${event.title}. Join the WhatsApp group: ${event.whatsappLink} | Confirmation: ${confirmationCode}`;
-    try {
-      await sendSMS(phone, smsBody);
-    } catch {
-      console.error("[SMS failed but registration succeeded]");
-    }
+    const formattedPhone = formatPhone(phone);
+    const message = 
+      `Hi ${name}! You're confirmed for ${event.title} on ` +
+      `${new Date(event.date).toDateString()}. ` +
+      `Join the WhatsApp group here: ${event.whatsappLink} ` + 
+      `| Ref: ${confirmationCode}`;
+
+    await sendSMS(formattedPhone, message);
 
     return NextResponse.json({ success: true, confirmationCode });
   } catch (err) {
