@@ -25,13 +25,19 @@ export default function About() {
           {/* Left - Image */}
           <motion.div variants={fadeUp} className="relative">
             <div className="relative aspect-[3/4] bg-[#1A1A1A] overflow-hidden group">
+              {/* Fallback Image / Background */}
+              <div 
+                className="absolute inset-0 bg-cover bg-center transition-opacity duration-700"
+                style={{ backgroundImage: 'url("https://res.cloudinary.com/di5ga8z9i/image/upload/v1779124854/clyde2_wsbef9.jpg")' }}
+              />
+              
               <iframe
-                src="https://www.youtube.com/embed/B6d7A_C30P0?autoplay=1&mute=1&controls=0&loop=1&playlist=B6d7A_C30P0&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1"
-                className="absolute inset-0 w-[100%] h-[100%] pointer-events-none scale-[1.5]"
+                src="https://www.youtube.com/embed/B6d7A_C30P0?autoplay=1&mute=1&controls=0&loop=1&playlist=B6d7A_C30P0&modestbranding=1&rel=0&iv_load_policy=3&playsinline=1&vq=hd720"
+                className="absolute inset-0 w-full h-full pointer-events-none scale-[1.5] z-0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 style={{ border: 0 }}
               />
-              <div className="absolute inset-0 bg-black/20" />
+              <div className="absolute inset-0 bg-black/30" />
               {/* Badge */}
               <div className="absolute top-4 right-4 bg-green text-black font-barlow font-bold text-[11px] uppercase tracking-wider px-3 py-2 z-10">
                 #1 COMBAT COACH · NAIROBI
