@@ -2,12 +2,12 @@ import Link from "next/link";
 import { Instagram, Facebook } from "@/components/ui/BrandIcons";
 
 const quickLinks = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Packages", href: "#packages" },
+  { label: "About", href: "/#about" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Packages", href: "/#packages" },
   { label: "Events", href: "/events" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Contact", href: "#contact" },
+  { label: "Gallery", href: "/#gallery" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Footer() {
@@ -70,7 +70,7 @@ export default function Footer() {
               YOUR FIRST<br />SESSION AWAITS.
             </p>
             <Link
-              href="#contact"
+              href="/#contact"
               className="inline-flex items-center bg-green text-black font-barlow font-bold text-[13px] uppercase tracking-widest px-6 py-3 hover:bg-[#166534] transition-colors duration-200"
             >
               Book a Session

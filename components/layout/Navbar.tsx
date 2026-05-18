@@ -5,12 +5,12 @@ import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Skills", href: "#skills" },
-  { label: "Packages", href: "#packages" },
+  { label: "About", href: "/#about" },
+  { label: "Skills", href: "/#skills" },
+  { label: "Packages", href: "/#packages" },
   { label: "Events", href: "/events" },
-  { label: "Gallery", href: "#gallery" },
-  { label: "Contact", href: "#contact" },
+  { label: "Gallery", href: "/#gallery" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Navbar() {
@@ -51,7 +51,7 @@ export default function Navbar() {
 
           <div className="flex items-center gap-4">
             <Link
-              href="#contact"
+              href="/#contact"
               className="hidden lg:inline-flex items-center bg-green text-black font-barlow font-bold text-[13px] uppercase tracking-widest px-6 py-3 hover:bg-[#166534] transition-colors duration-200"
             >
               Book a Session
@@ -86,7 +86,7 @@ export default function Navbar() {
             </Link>
           ))}
           <Link
-            href="#contact"
+            href="/#contact"
             onClick={() => setMenuOpen(false)}
             className="mt-4 bg-green text-black font-barlow font-bold text-[13px] uppercase tracking-widest px-8 py-4 hover:bg-[#166534] transition-colors duration-200"
           >
