@@ -1,18 +1,31 @@
+"use client";
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { Plus, Play } from "lucide-react";
 
+interface GalleryItem {
+  _id: string;
+  type: "image" | "video";
+  url: string;
+  title?: string;
+  aspect?: string;
+}
+
 export default function Gallery() {
   const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
-  const [items, setItems] = useState([]);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [items, setItems] = useState<GalleryItem[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetch("/api/gallery")
       .then(res => res.json())
       .then(data => {
-        setItems(data);
+        setItems(Array.isArray(data) ? data : []);
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error(err);
         setLoading(false);
       });
   }, []);
@@ -22,7 +35,8 @@ export default function Gallery() {
       return url.replace("watch?v=", "embed/");
     }
     if (url.includes("youtu.be/")) {
-      return url.replace("youtu.be/", "youtube.com/embed/");
+      const id = url.split("/").pop();
+      return `https://www.youtube.com/embed/${id}`;
     }
     return url;
   };
@@ -50,11 +64,11 @@ export default function Gallery() {
           <motion.div
             ref={ref}
             initial="hidden"
-            animate={inView ? "show" : "hidden"}
+            animate={isInView ? "show" : "hidden"}
             variants={{ show: { transition: { staggerChildren: 0.08 } } }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px bg-[#2A2A2A]"
           >
-            {items.map((item: any, i) => (
+            {items.map((item: any) => (
               <motion.div
                 key={item._id}
                 variants={{ hidden: { opacity: 0 }, show: { opacity: 1, transition: { duration: 0.4 } } }}
@@ -83,7 +97,6 @@ export default function Gallery() {
                   </div>
                 )}
                 
-                {/* Hover overlay for Images */}
                 <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-center pointer-events-none">
                   <div className="w-16 h-16 border-2 border-green flex items-center justify-center scale-75 group-hover:scale-100 transition-transform duration-200">
                     <Plus size={24} className="text-green" />

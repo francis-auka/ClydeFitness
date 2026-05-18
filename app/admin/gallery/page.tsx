@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { Plus, Trash2, Image as ImageIcon, Video, Loader2 } from "lucide-react";
 
 export default function AdminGalleryPage() {
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [adding, setAdding] = useState(false);
   const [formData, setFormData] = useState({ type: "image", url: "", title: "", aspect: "aspect-[16/9]" });
