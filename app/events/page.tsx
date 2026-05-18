@@ -2,6 +2,8 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import EventCard from "@/components/events/EventCard";
 
+export const dynamic = "force-dynamic";
+
 import { connectDB } from "@/lib/mongodb";
 import { Event } from "@/models/Event";
 

@@ -4,6 +4,8 @@ import Link from "next/link";
 import { PlusCircle, Pencil, BookOpen } from "lucide-react";
 import DeleteEventButton from "@/components/admin/DeleteEventButton";
 
+export const dynamic = "force-dynamic";
+
 async function getEvents() {
   await connectDB();
   return Event.find().sort({ createdAt: -1 }).lean();
