@@ -18,7 +18,7 @@ export default function Gallery() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    fetch("/api/gallery")
+    fetch("/api/gallery", { cache: "no-store" })
       .then(res => res.json())
       .then(data => {
         setItems(Array.isArray(data) ? data : []);

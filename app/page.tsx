@@ -9,6 +9,8 @@ import Contact from "@/components/home/Contact";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 
+export const dynamic = "force-dynamic";
+
 export default function Home() {
   return (
     <main className="relative">
