@@ -42,8 +42,8 @@ export default function Contact() {
             </p>
             <div className="flex flex-col gap-4 mb-8">
               {[
-                { icon: Phone, text: "+254 700 000 000" },
-                { icon: Mail, text: "coachclyde@gmail.com" },
+                { icon: Phone, text: "+254 759 593 696" },
+                { icon: Mail, text: "clydeokothotieno@gmail.com" },
                 { icon: MapPin, text: "Nairobi, Kenya" },
               ].map(({ icon: Icon, text }) => (
                 <div key={text} className="flex items-center gap-3">
@@ -79,7 +79,7 @@ export default function Contact() {
                 {[
                   { label: "Full Name", key: "name", type: "text", placeholder: "Your name" },
                   { label: "Email", key: "email", type: "email", placeholder: "your@email.com" },
-                  { label: "Phone Number", key: "phone", type: "tel", placeholder: "+254 700 000 000" },
+                  { label: "Phone Number", key: "phone", type: "tel", placeholder: "+254 759 593 696" },
                 ].map(({ label, key, type, placeholder }) => (
                   <div key={key}>
                     <label className="font-barlow text-[12px] uppercase tracking-widest text-[#888888] block mb-1">{label}</label>
@@ -125,7 +125,7 @@ export default function Contact() {
                 </button>
                 <p className="font-dm-sans text-[13px] text-[#888888] text-center">
                   Or{" "}
-                  <a href="https://wa.me/254700000000" className="text-green hover:underline">
+                  <a href="https://wa.me/254759593696" className="text-green hover:underline">
                     WhatsApp directly →
                   </a>
                 </p>
