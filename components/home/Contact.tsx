@@ -2,7 +2,7 @@
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Phone, Mail, MapPin } from "lucide-react";
-import { Instagram, Facebook } from "@/components/ui/BrandIcons";
+import { Instagram, Facebook, TikTok } from "@/components/ui/BrandIcons";
 
 export default function Contact() {
   const ref = useRef(null);
@@ -13,8 +13,22 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
-    await new Promise((r) => setTimeout(r, 1200));
-    setStatus("success");
+
+    const whatsappNumber = "254759593696";
+    const text = `*New Inquiry from ClydeFitness Website*
+    
+*Name:* ${form.name}
+*Email:* ${form.email}
+*Phone:* ${form.phone}
+*Package:* ${form.pkg || 'N/A'}
+*Message:* ${form.message}`;
+
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+
+    setTimeout(() => {
+      setStatus("success");
+      window.open(whatsappUrl, "_blank");
+    }, 800);
   };
 
   return (
@@ -53,14 +67,21 @@ export default function Contact() {
               ))}
             </div>
             <div className="flex gap-3">
-              {[Instagram, Facebook].map((Icon, i) => (
-                <a key={i} href="#" className="w-10 h-10 border border-[#2A2A2A] flex items-center justify-center text-[#888888] hover:border-green hover:text-green transition-colors duration-200">
+              {[
+                { Icon: Instagram, href: "https://instagram.com/coachclyde_fitness" },
+                { Icon: Facebook, href: "#" },
+                { Icon: TikTok, href: "https://www.tiktok.com/@theprettymfmehn" }
+              ].map(({ Icon, href }, i) => (
+                <a 
+                  key={i} 
+                  href={href} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 border border-[#2A2A2A] flex items-center justify-center text-[#888888] hover:border-green hover:text-green transition-colors duration-200"
+                >
                   <Icon size={16} />
                 </a>
               ))}
-              <a href="#" className="w-10 h-10 border border-[#2A2A2A] flex items-center justify-center text-[#888888] hover:border-green hover:text-green transition-colors duration-200 font-barlow text-xs font-bold">
-                TT
-              </a>
             </div>
           </div>
 
