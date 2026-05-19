@@ -8,38 +8,62 @@ const packages = [
   {
     tag: "STARTER",
     tagStyle: "border border-[#2A2A2A] text-[#888888]",
-    price: "KES 2,000",
+    price: "KES 2,500",
     freq: "/ session",
-    name: "Drop-In Class",
+    name: "Group Session",
     featured: false,
-    features: ["1 group session (60 min)", "Any discipline — HIIT, Taebo, Boxing", "No commitment required"],
+    features: [
+      "1 group session (90 min)",
+      "Taebo, HIIT, Body Toning",
+      "Insanity & Aerobics",
+      "No commitment required"
+    ],
   },
   {
     tag: "MOST POPULAR",
     tagStyle: "bg-green text-black font-bold",
-    price: "KES 7,500",
+    price: "KES 9,000",
     freq: "/ month",
     name: "Group Monthly",
     featured: true,
-    features: ["4 group sessions per month", "Mixed disciplines", "Programme design included", "WhatsApp check-ins"],
+    features: [
+      "4 group sessions per month",
+      "90 min group sessions",
+      "Taebo, HIIT, Body Toning",
+      "Insanity & Aerobics"
+    ],
   },
   {
     tag: "PERSONAL",
     tagStyle: "border border-[#2A2A2A] text-[#888888]",
-    price: "KES 5,000",
+    price: "KES 2,000",
     freq: "/ session",
     name: "1-on-1 Training",
     featured: false,
-    features: ["60–90 min personal session", "Full client assessment", "Custom programme design", "Injury prevention focus"],
+    features: [
+      "60–90 min personal session",
+      "Full client assessment",
+      "Custom programme design",
+      "Injury prevention focus",
+      "Boxing & weight training",
+      "Nutrition guidance"
+    ],
   },
   {
     tag: "ELITE",
     tagStyle: "border border-white/20 text-[#888888]",
-    price: "KES 18,000",
+    price: "KES 22,000",
     freq: "/ month",
     name: "Elite Coaching",
     featured: false,
-    features: ["8 personal sessions per month", "Full programme design", "Nutrition guidance", "Progress tracking & reports", "Priority booking"],
+    features: [
+      "12 personal sessions per month",
+      "60-90 min per session",
+      "Full client assessment",
+      "Custom programme design",
+      "Full body recovery focus",
+      "Nutrition guidance"
+    ],
   },
 ];
 
