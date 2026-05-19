@@ -22,7 +22,28 @@ const dmSans = DM_Sans({
 
 export const metadata: Metadata = {
   title: "ClydeFitness | Train Hard. Fight Smart.",
-  description: "Combat-based fitness coaching in Nairobi. Taebo, Kickboxing, Boxing, HIIT, and Insanity.",
+  description: "Certified combat-based fitness coaching in Nairobi by Coach Clyde. Expertise in Taebo, Kickboxing, Boxing, HIIT, and personal training.",
+  openGraph: {
+    title: "ClydeFitness | Coach Clyde",
+    description: "Train with Nairobi's #1 Combat Coach. Structured, results-driven fitness sessions.",
+    url: "https://clydefitness.co.ke",
+    siteName: "ClydeFitness",
+    images: [
+      {
+        url: "/opengraph-image.png",
+        width: 800,
+        height: 800,
+      },
+    ],
+    locale: "en_KE",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "ClydeFitness | Train Hard. Fight Smart.",
+    description: "Combat-based fitness coaching in Nairobi. Taebo, Kickboxing, Boxing, HIIT, and Insanity.",
+    images: ["/opengraph-image.png"],
+  },
 };
 
 export default function RootLayout({
