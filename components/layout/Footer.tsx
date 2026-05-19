@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Instagram, Facebook } from "@/components/ui/BrandIcons";
+import { Instagram, Facebook, TikTok } from "@/components/ui/BrandIcons";
 
 const quickLinks = [
   { label: "About", href: "/#about" },
@@ -8,6 +8,12 @@ const quickLinks = [
   { label: "Events", href: "/events" },
   { label: "Gallery", href: "/#gallery" },
   { label: "Contact", href: "/#contact" },
+];
+
+const socialLinks = [
+  { Icon: Instagram, href: "https://instagram.com/coachclyde_fitness", label: "Instagram" },
+  { Icon: Facebook, href: "#", label: "Facebook" },
+  { Icon: TikTok, href: "https://www.tiktok.com/@theprettymfmehn", label: "TikTok" },
 ];
 
 export default function Footer() {
@@ -25,21 +31,18 @@ export default function Footer() {
               Train Hard. Fight Smart.
             </p>
             <div className="flex gap-3">
-              {[Instagram, Facebook].map((Icon, i) => (
+              {socialLinks.map(({ Icon, href, label }) => (
                 <a
-                  key={i}
-                  href="#"
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="w-10 h-10 border border-[#2A2A2A] flex items-center justify-center text-[#888888] hover:border-green hover:text-green transition-colors duration-200"
+                  aria-label={label}
                 >
                   <Icon size={16} />
                 </a>
               ))}
-              <a
-                href="#"
-                className="w-10 h-10 border border-[#2A2A2A] flex items-center justify-center text-[#888888] hover:border-green hover:text-green transition-colors duration-200 font-barlow text-xs font-bold"
-              >
-                TT
-              </a>
             </div>
           </div>
 
