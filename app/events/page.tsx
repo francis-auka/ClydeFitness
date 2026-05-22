@@ -2,6 +2,13 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import EventCard from "@/components/events/EventCard";
 
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Upcoming Events & Bootcamps | Coach Clyde Fitness",
+  description: "Book your spot at Coach Clyde's upcoming fitness events and outdoor bootcamps in Nairobi. Limited spots available.",
+};
+
 export const dynamic = "force-dynamic";
 
 import { connectDB } from "@/lib/mongodb";

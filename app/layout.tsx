@@ -21,28 +21,46 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
-  title: "ClydeFitness | Train Hard. Fight Smart.",
-  description: "Certified combat-based fitness coaching in Nairobi by Coach Clyde. Expertise in Taebo, Kickboxing, Boxing, HIIT, and personal training.",
+  title: {
+    default: "Coach Clyde | Combat Fitness Coaching Nairobi",
+    template: "%s | Coach Clyde Fitness",
+  },
+  description: "Nairobi's premier combat-based fitness coach. Taebo, Kickboxing, Boxing, HIIT, Insanity & Floor Training. Group classes and personal training.",
+  keywords: ["fitness coach Nairobi", "boxing coach Nairobi", "HIIT training Nairobi", "Taebo Nairobi", "kickboxing Nairobi", "personal trainer Nairobi", "combat fitness Kenya", "Coach Clyde"],
+  authors: [{ name: "Coach Clyde" }],
+  creator: "Coach Clyde",
+  metadataBase: new URL("https://www.clydefitness.co.ke"),
+  alternates: {
+    canonical: "https://www.clydefitness.co.ke",
+  },
   openGraph: {
-    title: "ClydeFitness | Coach Clyde",
-    description: "Train with Nairobi's #1 Combat Coach. Structured, results-driven fitness sessions.",
-    url: "https://clydefitness.co.ke",
-    siteName: "ClydeFitness",
+    type: "website",
+    locale: "en_KE",
+    url: "https://www.clydefitness.co.ke",
+    siteName: "Coach Clyde Fitness",
+    title: "Coach Clyde | Combat Fitness Coaching Nairobi",
+    description: "Nairobi's premier combat-based fitness coach. Taebo, Kickboxing, Boxing, HIIT, Insanity & Floor Training.",
     images: [
       {
-        url: "/opengraph-image.png",
-        width: 800,
-        height: 800,
-      },
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Coach Clyde Fitness - Combat Training Nairobi",
+      }
     ],
-    locale: "en_KE",
-    type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "ClydeFitness | Train Hard. Fight Smart.",
-    description: "Combat-based fitness coaching in Nairobi. Taebo, Kickboxing, Boxing, HIIT, and Insanity.",
-    images: ["/opengraph-image.png"],
+    title: "Coach Clyde | Combat Fitness Coaching Nairobi",
+    description: "Nairobi's premier combat-based fitness coach. Book a session today.",
+    images: ["/og-image.jpg"],
+  },
+  verification: {
+    google: "DHJdarnsV8lMLp0jeRks01sPb86xchi-etw1huZdp2o",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 

@@ -71,8 +71,11 @@ export default function Gallery() {
                 {item.type === "image" ? (
                   <img 
                     src={item.url} 
-                    alt={item.title || "Gallery image"} 
+                    alt={item.title || "Coach Clyde Fitness Gallery Item"} 
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    loading="lazy"
+                    width={400}
+                    height={300}
                     onError={(e) => {
                       console.error("Image load failed for:", item.url);
                       (e.target as any).src = "https://via.placeholder.com/400x300?text=Error+Loading+Image";

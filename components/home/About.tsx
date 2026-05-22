@@ -29,6 +29,8 @@ export default function About() {
               <div 
                 className="absolute inset-0 bg-cover bg-center transition-opacity duration-700"
                 style={{ backgroundImage: 'url("https://res.cloudinary.com/di5ga8z9i/image/upload/v1779124854/clyde2_wsbef9.jpg")' }}
+                role="img"
+                aria-label="Coach Clyde - Professional Combat Fitness Coaching"
               />
               
               <iframe
@@ -36,6 +38,8 @@ export default function About() {
                 className="absolute inset-0 w-full h-full pointer-events-none scale-[1.5] z-0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                 style={{ border: 0 }}
+                title="Coach Clyde Fitness Training Video"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-black/30" />
               {/* Badge */}

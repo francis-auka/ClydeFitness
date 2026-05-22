@@ -69,8 +69,12 @@ export default function Hero() {
             <div className="relative w-full h-full min-h-[500px] bg-[#1A1A1A] border border-[#2A2A2A] overflow-hidden">
               <img 
                 src="https://res.cloudinary.com/di5ga8z9i/image/upload/v1779111725/clyde1_dwm4rs.jpg" 
-                alt="Coach Clyde" 
+                alt="Coach Clyde Fitness Training" 
                 className="w-full h-full object-cover grayscale opacity-80 hover:grayscale-0 transition-all duration-700"
+                loading="eager"
+                fetchPriority="high"
+                width={600}
+                height={800}
               />
               <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-[#080808] to-transparent" />
 
