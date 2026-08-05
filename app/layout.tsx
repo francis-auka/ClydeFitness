@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Barlow_Condensed, DM_Sans } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 
 const bebas = Bebas_Neue({
@@ -74,6 +75,19 @@ export default function RootLayout({
       lang="en"
       className={`${bebas.variable} ${barlow.variable} ${dmSans.variable} h-full antialiased`}
     >
+      {/* Google tag (gtag.js) */}
+      <Script
+        src="https://www.googletagmanager.com/gtag/js?id=G-ZKNY5JTXK4"
+        strategy="afterInteractive"
+      />
+      <Script id="google-analytics" strategy="afterInteractive">
+        {`
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-ZKNY5JTXK4');
+        `}
+      </Script>
       <body className="min-h-full flex flex-col bg-[#080808] text-[#F5F5F5] font-dm-sans">{children}</body>
     </html>
   );
